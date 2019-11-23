@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Peewee tech test</title>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script type="text/javascript">
+            function send() {
+                const message = document.getElementById("message").value;
+                axios.post('http://localhost:3000/api', {message}).then(response => {
+                    document.getElementById("response").innerText = response.data;
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <p>
+            Insert your text/command into the textbox and click on Send to save it.<br/>
+            The command "summary" is to show all messages saved.<br/>
+            The command "flush" is to delete all messages saved.
+        </p>
+        <form action="">
+            <input type="text" placeholder="Type here" id="message">
+            <button type="button" onclick="send()">Send</button>
+        </form>
+        <p>Response from the server:</p>
+        <div id="response"></div>
+    </body>
+</html>
